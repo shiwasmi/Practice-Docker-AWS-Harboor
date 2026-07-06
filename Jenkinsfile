@@ -88,7 +88,7 @@ pipeline {
                         sh '''
                     echo "$PASSWORD" | docker login 43.205.217.143:8082 -u "$USERNAME" --password-stdin
                     docker tag practice-docker-aws-harboor:latest 43.205.217.143:8082/practice-docker-aws-harboor-practice/practice-docker-aws-harboor:latest
-                    docker push 43.205.217.143:8082/practice-docker-aws-harboor/practice-docker-aws-harboor-practice-2:latest
+                    docker push 43.205.217.143:8082/practice-docker-aws-harboor/practice-docker-aws-harboor-practice:latest
                     docker logout 43.205.217.143:8082
                     '''
                     }
@@ -102,7 +102,7 @@ pipeline {
                 docker rmi sagarchattar/practice-docker-aws-harboor:latest || echo "Image not found or already deleted"
                 docker rmi practice-docker-aws-harboor:latest || echo "Image not found or already deleted"
                 docker rmi 251335054837.dkr.ecr.ap-south-1.amazonaws.com/sagarchattar:practice-docker-aws-harboor-latest || echo "Image not found or already deleted"
-                docker rmi 43.205.217.143:8082/bookmyplan-practice/bookmyplan-practice-2:latest || echo "Image not found or already deleted"
+                docker rmi 43.205.217.143:8082/bookmyplan-practice/bookmyplan-practice:latest || echo "Image not found or already deleted"
                 docker image prune -f
                 '''
                 echo 'Local Docker Images Cleaned Up Successfully!!'
