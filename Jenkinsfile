@@ -41,14 +41,14 @@ pipeline {
 
         stage('Build & Tag Docker Image') {
             steps {
-                sh "docker build -t sagardocker/Practice-Docker-AWS-Harboor:latest -t Practice-Docker-AWS-Harboor:latest ."
+                sh "docker build -t sagarchattar/Practice-Docker-AWS-Harboor:latest -t Practice-Docker-AWS-Harboor:latest ."
             }
         }
 
         stage('Docker Image Scanning') {
             steps {
                 echo 'Scanning Docker Image with Trivy...'
-                sh 'trivy image sagardocker/Practice-Docker-AWS-Harboor:latest || echo "Scan Failed - Proceeding with Caution"'
+                sh 'trivy image sagarchattar/Practice-Docker-AWS-Harboor:latest || echo "Scan Failed - Proceeding with Caution"'
                 echo 'Docker Image Scanning Completed!'
             }
         }
@@ -69,7 +69,7 @@ pipeline {
             steps {
                 echo 'Cleaning Up Local Docker Images...'
                 sh '''
-                docker rmi sagardocker/Practice-Docker-AWS-Harboor:latest || echo "Image not found or already deleted"
+                docker rmi sagarchattar/Practice-Docker-AWS-Harboor:latest || echo "Image not found or already deleted"
                 docker rmi Practice-Docker-AWS-Harboor:latest || echo "Image not found or already deleted"
                 docker image prune -f
                 '''
