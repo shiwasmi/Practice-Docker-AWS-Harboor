@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.Practice_Docker_AWS_Harboor.PracticeDockerAwsHarboorApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.126 s -- in com.example.Practice_Docker_AWS_Harboor.PracticeDockerAwsHarboorApplicationTests

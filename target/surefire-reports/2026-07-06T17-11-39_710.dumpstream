@@ -1,0 +1,5 @@
+# Created at 2026-07-06T17:11:40.067
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Devops\Devops_Practice\Practice-2\Practice-Docker-AWS-Harboor\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
