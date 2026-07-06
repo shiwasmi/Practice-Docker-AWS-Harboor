@@ -8,16 +8,16 @@ LABEL maintainer="sagar.chattar@example.com"
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Create a user for running the application
-RUN useradd -m Practice-Docker-AWS-Harboor
+RUN useradd -m practice-docker-aws-harboor
 
 # Copy your JAR file into the webapps directory
-COPY ./target/Practice-Docker-AWS-Harboor*.jar /usr/local/tomcat/webapps/
+COPY ./target/practice-docker-aws-harboor*.war /usr/local/tomcat/webapps/
 
 # Expose the default Tomcat port
 EXPOSE 8080
 
 # Set the user to 'Practice-Docker-AWS-Harboor' for security
-USER Practice-Docker-AWS-Harboor
+USER practice-docker-aws-harboor
 
 # Default command to run Tomcat
 CMD ["catalina.sh", "run"]
