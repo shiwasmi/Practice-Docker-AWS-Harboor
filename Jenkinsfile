@@ -65,12 +65,29 @@ pipeline {
             }
         }
 
+        stage('Push Docker Image to Amazon ECR') {
+            steps {
+                script {
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ecr-credentials']]) {
+                        sh '''
+                            aws ecr get-login-password --region ap-south-1 | \
+                              docker login --username AWS --password-stdin 251335054837.dkr.ecr.ap-south-1.amazonaws.com
+
+                            docker tag practice-docker-aws-harboor:latest 251335054837.dkr.ecr.ap-south-1.amazonaws.com/sagardocker:practice-docker-aws-harboor-latest
+                            docker push 251335054837.dkr.ecr.ap-south-1.amazonaws.com/sagardocker:practice-docker-aws-harboor-latest
+                        '''
+                        echo 'Docker Image Pushed to Amazon ECR Successfully!'
+                    }
+                }
+            }
+        }
         stage('Clean Up Local Docker Images') {
             steps {
                 echo 'Cleaning Up Local Docker Images...'
                 sh '''
                 docker rmi sagarchattar/practice-docker-aws-harboor:latest || echo "Image not found or already deleted"
                 docker rmi practice-docker-aws-harboor:latest || echo "Image not found or already deleted"
+                docker rmi 251335054837.dkr.ecr.ap-south-1.amazonaws.com/sagarchattar:practice-docker-aws-harboor-latest || echo "Image not found or already deleted"
                 docker image prune -f
                 '''
                 echo 'Local Docker Images Cleaned Up Successfully!!'
