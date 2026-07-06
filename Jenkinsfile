@@ -32,9 +32,9 @@ pipeline {
                 sh 'mvn package'
                 sh '''
                     # If WAR is expected
-                    cp target/*.war target/bookmyplan-practice-${BUILD_NUMBER}.war
+                    cp target/*.war target/Practice-Docker-AWS-Harboor-${BUILD_NUMBER}.war
                 '''
-                archiveArtifacts artifacts: 'target/bookmyplan-practice-*.war', fingerprint: true
+                archiveArtifacts artifacts: 'target/Practice-Docker-AWS-Harboor-*.war', fingerprint: true
                 echo 'Artifact Created Successfully!!'
             }
         }
